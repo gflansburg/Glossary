@@ -120,6 +120,12 @@
   <data name="ControlTitle_settings.Text" xml:space="preserve">
     <value>Glossary Agent Settings</value>
   </data>
+  <data name="lblFriendlyUrl.Help" xml:space="preserve">
+    <value>Use a friendly url via URL Rewrite.</value>
+  </data>
+  <data name="lblFriendlyUrl.Text" xml:space="preserve">
+    <value>Friendly URL</value>
+  </data>
   <data name="lblGlossaryPage.Help" xml:space="preserve">
     <value>The page that has your glossary module to send people to when the term is clicked.</value>
   </data>
@@ -215,12 +221,6 @@
   </data>
   <data name="lblUnderlineWidth.Text" xml:space="preserve">
     <value>Underline Thickness</value>
-  </data>
-  <data name="lblUseFriendlyUrl.Help" xml:space="preserve">
-    <value>Use a friendly url via URL Rewrite.</value>
-  </data>
-  <data name="lblUseFriendlyUrl.Text" xml:space="preserve">
-    <value>Friendly URL</value>
   </data>
   <data name="lblUseImage.Help" xml:space="preserve">
     <value>Show an icon next to the link.</value>
