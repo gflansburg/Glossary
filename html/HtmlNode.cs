@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// The HtmlNode is the base for all objects that may appear in HTML. Currently, 

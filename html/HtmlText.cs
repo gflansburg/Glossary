@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// The HtmlText node represents a simple piece of text from the document.

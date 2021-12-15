@@ -3,7 +3,7 @@ using System.Text;
 using System.Collections;
 using System.ComponentModel;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// This is the basic HTML document object used to represent a sequence of HTML.

@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Specialized;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// This is the main HTML parser class. I recommend you don't play around too much in here

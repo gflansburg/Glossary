@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// The HtmlAttribute object represents a named value associated with an HtmlElement.

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// HTML 4 Entity coding routines

@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.ComponentModel;
 
-namespace Gafware.Net
+namespace Gafware.Modules.Glossary.Html
 {
 	/// <summary>
 	/// The HtmlElement object represents any HTML element. An element has a name

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Gafware.Modules.Glossary.Components;
-using Gafware.Net;
+using Gafware.Modules.Glossary.Html;
 using DotNetNuke.Services.Scheduling;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
