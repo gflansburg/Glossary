@@ -216,6 +216,12 @@
   <data name="lblUnderlineWidth.Text" xml:space="preserve">
     <value>Underline Thickness</value>
   </data>
+  <data name="lblUseFriendlyUrl.Help" xml:space="preserve">
+    <value>Use a friendly url via URL Rewrite.</value>
+  </data>
+  <data name="lblUseFriendlyUrl.Text" xml:space="preserve">
+    <value>Friendly URL</value>
+  </data>
   <data name="lblUseImage.Help" xml:space="preserve">
     <value>Show an icon next to the link.</value>
   </data>
