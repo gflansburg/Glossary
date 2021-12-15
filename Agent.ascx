@@ -74,7 +74,7 @@
 									});
 								});
 								content = html.outerHTML();
-								var text = content<%= !HideEvent.Equals("mouseleave") ? " + '<br /><br /><a id=\"qtip-glossary-' + api.id + '\" href=\"" + GlossaryPage + (UseFriendlUrl ? "/term/" : "?term=") + "' + escape(a.text()) + '\">Go to Full Glossary Entry</a>'" : "" %>;
+								var text = content<%= !HideEvent.Equals("mouseleave") ? " + '<br /><br /><a id=\"qtip-glossary-' + api.id + '\" href=\"" + GlossaryPage + (UseFriendlyUrl ? "/term/" : "?term=") + "' + escape(a.text()) + '\">Go to Full Glossary Entry</a>'" : "" %>;
 								api.set('content.text', text);
 								<%= ShowEvent.Equals("click") ? "setTimeout(function() { $('#qtip-glossary-' + api.id).focus(); }, 100);" : "" %>
 							}, function (xhr, status, error) {
