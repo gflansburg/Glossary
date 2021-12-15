@@ -31,7 +31,7 @@
 				var a = this;
 				$(this).wrap('<span class=\"glossarycontainer\"></span>');
 				$(this).css('border-bottom-color', '<%= System.Drawing.ColorTranslator.ToHtml(UnderlineColor) %>');
-				$(this).attr('href', <%= ShowEvent.Equals("click") ? "'javascript:void(null)' ": "'" + GlossaryPage + "/term/' + escape($(this).text())" %>);
+				$(this).attr('href', <%= ShowEvent.Equals("click") ? "'javascript:void(null)' ": "'" + GlossaryPage + (UseFriendlyUrl ? "/term/" : "?term=") + "' + escape($(this).text())" %>);
 				$(this).attr('alt', 'Definition for ' + escape($(this).text()));
 				$(this).attr('role', 'aria-haspopup');
 				$(this).attr('aria-haspopup', 'true');
@@ -66,7 +66,7 @@
 								anchors.each(function() {
 									var a = this;
 									$(this).css('border-bottom-color', '<%= System.Drawing.ColorTranslator.ToHtml(UnderlineColor) %>');
-									$(this).attr('href', '<%= GlossaryPage %>/term/' + escape($(this).text()));
+                                    $(this).attr('href', '<%= GlossaryPage + (UseFriendlyUrl ? "/term/" : "?term=") %>' + escape($(this).text()));
 									$(this).attr('alt', 'Definition for ' + escape($(this).text()));
 									$(this).attr('role', 'aria-haspopup');
 									$(this).mouseleave(function () {
@@ -74,7 +74,7 @@
 									});
 								});
 								content = html.outerHTML();
-								var text = content<%= !HideEvent.Equals("mouseleave") ? " + '<br /><br /><a id=\"qtip-glossary-' + api.id + '\" href=\"" + GlossaryPage + "/term/' + escape(a.text()) + '\">Go to Full Glossary Entry</a>'" : "" %>;
+								var text = content<%= !HideEvent.Equals("mouseleave") ? " + '<br /><br /><a id=\"qtip-glossary-' + api.id + '\" href=\"" + GlossaryPage + (UseFriendlUrl ? "/term/" : "?term=") + "' + escape(a.text()) + '\">Go to Full Glossary Entry</a>'" : "" %>;
 								api.set('content.text', text);
 								<%= ShowEvent.Equals("click") ? "setTimeout(function() { $('#qtip-glossary-' + api.id).focus(); }, 100);" : "" %>
 							}, function (xhr, status, error) {

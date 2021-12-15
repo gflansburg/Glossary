@@ -149,6 +149,11 @@
             </asp:DropDownList>
         </div>
 
+        <div class="dnnFormItem">
+            <dnn:Label ID="lblFriendlyUrl" runat="server" ResourceKey="lblFriendlyUrl" ControlName="chkFriendlyUrl" Suffix=":" /> 
+            <asp:CheckBox ID="chkFriendlyUrl" runat="server" Checked="true" />
+        </div>
+
     </fieldset>
 </div>
 <script language="javascript" type="text/javascript">

@@ -10,6 +10,7 @@ namespace Gafware.Modules.Glossary.Components
     {
         public const string CSS_TAG_INCLUDE_FORMAT = "<link rel=\"stylesheet\" type=\"text/css\" href=\"{0}\" />";
         public const string SCRIPT_TAG_INCLUDE_FORMAT = "<script language=\"javascript\" type=\"text/javascript\" src=\"{0}\"></script>";
+        public const string USE_FRIENDLY_URL_KEY = "use.friendly.url";
         public const string CATEGORY_VISIBLE_KEY = "category.visible";
         public const string DEFAULT_CATEGORY_KEY = "default.category";
         public const string GLOSSARY_PAGE_KEY = "glossary.page";

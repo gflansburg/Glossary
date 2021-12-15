@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gafware.Modules.Glossary {
-    
-    
-    public partial class AgentSettings {
-        
+namespace Gafware.Modules.Glossary
+{
+
+
+    public partial class AgentSettings
+    {
+
         /// <summary>
         /// lblGlossaryPage control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblGlossaryPage;
-        
+
         /// <summary>
         /// ctlGlossaryPage control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.UrlControl ctlGlossaryPage;
-        
+
         /// <summary>
         /// lblStyle control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblStyle;
-        
+
         /// <summary>
         /// lstStyle control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstStyle;
-        
+
         /// <summary>
         /// lblRounded control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblRounded;
-        
+
         /// <summary>
         /// chkRounded control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkRounded;
-        
+
         /// <summary>
         /// lblShadowed control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblShadowed;
-        
+
         /// <summary>
         /// chkShadowed control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkShadowed;
-        
+
         /// <summary>
         /// lblPositionMy control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblPositionMy;
-        
+
         /// <summary>
         /// lstPostionMyY control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstPostionMyY;
-        
+
         /// <summary>
         /// lstPostionMyX control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstPostionMyX;
-        
+
         /// <summary>
         /// lblPositionAt control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblPositionAt;
-        
+
         /// <summary>
         /// lstPostionAtY control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstPostionAtY;
-        
+
         /// <summary>
         /// lstPostionAtX control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstPostionAtX;
-        
+
         /// <summary>
         /// lblUseImage control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblUseImage;
-        
+
         /// <summary>
         /// chkUseImage control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkUseImage;
-        
+
         /// <summary>
         /// pnlImage control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlImage;
-        
+
         /// <summary>
         /// lblImage control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblImage;
-        
+
         /// <summary>
         /// ddlImage control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlImage;
-        
+
         /// <summary>
         /// lblLinkColor control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblLinkColor;
-        
+
         /// <summary>
         /// cpLinkColor control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadColorPicker cpLinkColor;
-        
+
         /// <summary>
         /// lblHoverColor control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblHoverColor;
-        
+
         /// <summary>
         /// cpHoverColor control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadColorPicker cpHoverColor;
-        
+
         /// <summary>
         /// lblUnderlineColor control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblUnderlineColor;
-        
+
         /// <summary>
         /// cpUnderlineColor control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadColorPicker cpUnderlineColor;
-        
+
         /// <summary>
         /// lblUnderlineHoverColor control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblUnderlineHoverColor;
-        
+
         /// <summary>
         /// cpUnderlineHoverColor control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadColorPicker cpUnderlineHoverColor;
-        
+
         /// <summary>
         /// lblLinkBold control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblLinkBold;
-        
+
         /// <summary>
         /// lstLinkBold control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstLinkBold;
-        
+
         /// <summary>
         /// lblUnderline control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblUnderline;
-        
+
         /// <summary>
         /// lstUnderline control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstUnderline;
-        
+
         /// <summary>
         /// lblUnderlineWidth control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblUnderlineWidth;
-        
+
         /// <summary>
         /// lstUnderlineWidth control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstUnderlineWidth;
-        
+
         /// <summary>
         /// lblShow control.
         /// </summary>
@@ -317,7 +319,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblShow;
-        
+
         /// <summary>
         /// lstShow control.
         /// </summary>
@@ -326,7 +328,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstShow;
-        
+
         /// <summary>
         /// lblHide control.
         /// </summary>
@@ -335,7 +337,7 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.LabelControl lblHide;
-        
+
         /// <summary>
         /// lstHide control.
         /// </summary>
@@ -344,5 +346,23 @@ namespace Gafware.Modules.Glossary {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstHide;
+
+        /// <summary>
+        /// lblFriendlyUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DotNetNuke.UI.UserControls.LabelControl lblFriendlyUrl;
+
+        /// <summary>
+        /// chkFriendlyUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkFriendlyUrl;
     }
 }

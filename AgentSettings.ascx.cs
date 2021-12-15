@@ -130,6 +130,7 @@ namespace Gafware.Modules.Glossary
                     lstUnderline.SelectedValue = UnderlineStyle;
                     lstUnderlineWidth.SelectedValue = UnderlineWidth;
                     lstLinkBold.SelectedValue = LinkBold;
+                    chkFriendlyUrl.Checked = UseFriendlyUrl;
                 }
                 else
                 {
@@ -173,6 +174,7 @@ namespace Gafware.Modules.Glossary
                 modules.UpdateModuleSetting(ModuleId, GlossaryController.LINK_UNDERLINE_KEY, lstUnderline.SelectedValue);
                 modules.UpdateModuleSetting(ModuleId, GlossaryController.UNDERLINE_WIDTH_KEY, lstUnderlineWidth.SelectedValue);
                 modules.UpdateModuleSetting(ModuleId, GlossaryController.LINK_BOLD_KEY, lstLinkBold.SelectedValue);
+                modules.UpdateModuleSetting(ModuleId, GlossaryController.USE_FRIENDLY_URL_KEY, chkFriendlyUrl.Checked.ToString());
             }
             catch (Exception exc) //Module failed to load
             {

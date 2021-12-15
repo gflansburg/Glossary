@@ -18,6 +18,18 @@ namespace Gafware.Modules.Glossary
 {
     public class GlossaryModuleSettingsBase : ModuleSettingsBase
     {
+        protected bool UseFriendlyUrl
+        {
+            get
+            {
+                if (Settings.Contains(GlossaryController.USE_FRIENDLY_URL_KEY))
+                {
+                    return Convert.ToBoolean(Settings[GlossaryController.USE_FRIENDLY_URL_KEY].ToString());
+                }
+                return true;
+            }
+        }
+
         protected bool CategoryVisible
         {
             get
