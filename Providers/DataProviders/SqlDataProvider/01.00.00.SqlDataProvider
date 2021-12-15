@@ -1,0 +1,1382 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Drop Foreign Keys And Tables **/
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_GlossaryAlt]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt] DROP CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_GlossaryAlt]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_Glossary]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryPages]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages] DROP CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_Glossary]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Gafware_GlossaryPages_Tabs]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Tabs]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}Tabs] DROP CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryPages_Tabs]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_Glossary]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory] DROP CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_Glossary]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_GlossaryCategoryDefinition]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory] DROP CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_GlossaryCategoryDefinition]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]    Script Date: 09/09/2009 09:04:12 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_Glossary]    Script Date: 09/09/2009 09:00:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_Glossary]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Gafware_Glossary]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition]    Script Date: 09/09/2009 09:03:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]    Script Date: 11/12/2014 09:03:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryPages]    Script Date: 11/12/2014 09:03:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryPages]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages]
+GO
+
+
+/** Create Tables **/
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_Glossary]    Script Date: 09/09/2009 09:00:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}Gafware_Glossary](
+	[GlossaryID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Term] [nvarchar](100) NOT NULL,
+	[Definition] [nvarchar](4000) NOT NULL,
+	[PortalID] [int] NOT NULL,
+	[DateTimeStamp] [datetime] NOT NULL,
+ CONSTRAINT [PK_Gafware_Glossary] PRIMARY KEY CLUSTERED 
+(
+	[GlossaryID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition]    Script Date: 09/09/2009 09:03:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition](
+	[GlossaryCategoryDefinitionID] [bigint] IDENTITY(1,1) NOT NULL,
+	[PortalID] [int] NOT NULL,
+	[CategoryName] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}Gafware_GlossaryCategoryDefinition] PRIMARY KEY CLUSTERED 
+(
+	[GlossaryCategoryDefinitionID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]    Script Date: 09/09/2009 09:04:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory](
+	[GlossaryCategoryID] [bigint] IDENTITY(1,1) NOT NULL,
+	[GlossaryID] [bigint] NOT NULL,
+	[GlossaryCategoryDefinitionID] [bigint] NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}Gafware_GlossaryCategory] PRIMARY KEY CLUSTERED 
+(
+	[GlossaryCategoryID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_Glossary] FOREIGN KEY([GlossaryID])
+REFERENCES {databaseOwner}[{objectQualifier}Gafware_Glossary] ([GlossaryID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory] CHECK CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_Glossary]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_GlossaryCategoryDefinition] FOREIGN KEY([GlossaryCategoryDefinitionID])
+REFERENCES {databaseOwner}[{objectQualifier}Gafware_GlossaryCategoryDefinition] ([GlossaryCategoryDefinitionID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryCategory] CHECK CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryCategory_{objectQualifier}Gafware_GlossaryCategoryDefinition]
+GO
+
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]    Script Date: 11/12/2014 11:04:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt](
+	[AltID] [bigint] IDENTITY(1,1) NOT NULL,
+	[GlossaryID] [bigint] NOT NULL,
+	[AlternateTerm] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}Gafware_GlossaryAlt] PRIMARY KEY CLUSTERED 
+(
+	[AltID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_GlossaryAlt] FOREIGN KEY([GlossaryID])
+REFERENCES {databaseOwner}[{objectQualifier}Gafware_Glossary] ([GlossaryID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryAlt] CHECK CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_GlossaryAlt]
+GO
+
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}Gafware_GlossaryPages]    Script Date: 11/12/2014 11:13:58 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages](
+	[PageID] [bigint] IDENTITY(1,1) NOT NULL,
+	[GlossaryID] [bigint] NOT NULL,
+	[TabID] [int] NOT NULL,
+ CONSTRAINT [PK_Gafware_GlossaryPages] PRIMARY KEY CLUSTERED 
+(
+	[PageID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_Glossary] FOREIGN KEY([GlossaryID])
+REFERENCES {databaseOwner}[{objectQualifier}Gafware_Glossary] ([GlossaryID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages] CHECK CONSTRAINT [FK_{objectQualifier}Gafware_Glossary_FK_{objectQualifier}Gafware_Glossary]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryPages_Tabs] FOREIGN KEY([TabID])
+REFERENCES {databaseOwner}[{objectQualifier}Tabs] ([TabID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Gafware_GlossaryPages] CHECK CONSTRAINT [FK_{objectQualifier}Gafware_GlossaryPages_Tabs]
+GO
+
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: Gafware_Glossary
+/  ===================================================================================== */
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryGet    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryGet') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryGet
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryList    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryList
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByLetter    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryListByLetter') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByLetter
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByTerm    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryListByTerm') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByTerm
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByFilter    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryListByFilter') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByFilter
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByFilterAndCategory    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryListByFilterAndCategory') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryListByFilterAndCategory
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}Gafware_GlossaryListByCategory]    Script Date: 09/11/2009 13:16:48 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Gafware_GlossaryListByCategory]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Gafware_GlossaryListByCategory]
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCreate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCreate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCreate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryUpdate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryUpdate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryUpdate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryDelete    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryDelete
+GO
+
+	
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryGet
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryGet
+	@GlossaryID bigint
+AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+WHERE
+	[{objectQualifier}Gafware_Glossary].[GlossaryID] = @GlossaryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryList 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryList
+ @PortalID int   
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID]=@PortalID OR @PortalID=-1
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryListByLetter
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryListByLetter
+ @PortalID int   
+ ,@Letter nvarchar(1)
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID]=@PortalID AND
+ LEFT([{objectQualifier}Gafware_Glossary].[Term], 1) = @Letter
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryListByTerm
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryListByTerm
+ @PortalID int,
+ @Term nvarchar(100)
+AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID] = @PortalID AND
+ ([{objectQualifier}Gafware_Glossary].[Term] = @Term 
+ OR (SELECT COUNT(*) FROM {objectQualifier}Gafware_GlossaryAlt WHERE {objectQualifier}Gafware_GlossaryAlt.GlossaryID = {objectQualifier}Gafware_Glossary.GlossaryID AND {objectQualifier}Gafware_GlossaryAlt.AlternateTerm = @Term) > 0)
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryListByFilter
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryListByFilter
+ @PortalID int,
+ @Filter nvarchar(100)   
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID]=@PortalID AND
+ ([{objectQualifier}Gafware_Glossary].[Term] LIKE '%' + @Filter + '%' OR [{objectQualifier}Gafware_Glossary].[Definition] LIKE '%' + @Filter + '%'
+ OR (SELECT COUNT(*) FROM {objectQualifier}Gafware_GlossaryAlt WHERE {objectQualifier}Gafware_GlossaryAlt.GlossaryID = {objectQualifier}Gafware_Glossary.GlossaryID AND {objectQualifier}Gafware_GlossaryAlt.AlternateTerm
+ LIKE '%' + @Filter + '%') > 0)
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryListByCategory 
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS OFF
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Gafware_GlossaryListByCategory]
+		@CategoryID bigint
+		,@PortalID int 
+	AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ INNER JOIN [{objectQualifier}Gafware_GlossaryCategory] ON [{objectQualifier}Gafware_GlossaryCategory].GlossaryID = [{objectQualifier}Gafware_Glossary].GlossaryID
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID]=@PortalID 
+ AND [{objectQualifier}Gafware_GlossaryCategory].GlossaryCategoryDefinitionID = @CategoryID
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryListByFilterAndCategory 
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS OFF
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Gafware_GlossaryListByFilterAndCategory]
+		@CategoryID bigint
+		,@PortalID int
+		,@Filter nvarchar(100) 
+	AS
+
+SELECT
+	[{objectQualifier}Gafware_Glossary].[GlossaryID],
+	[{objectQualifier}Gafware_Glossary].[Term],
+	[{objectQualifier}Gafware_Glossary].[Definition],
+	[{objectQualifier}Gafware_Glossary].[PortalID],
+	[{objectQualifier}Gafware_Glossary].[DateTimeStamp]
+FROM [{objectQualifier}Gafware_Glossary]
+ INNER JOIN [{objectQualifier}Gafware_GlossaryCategory] ON [{objectQualifier}Gafware_GlossaryCategory].GlossaryID = [{objectQualifier}Gafware_Glossary].GlossaryID
+ WHERE [{objectQualifier}Gafware_Glossary].[PortalID]=@PortalID AND
+ ([{objectQualifier}Gafware_Glossary].[Term] LIKE '%' + @Filter + '%' OR [{objectQualifier}Gafware_Glossary].[Definition] LIKE '%' + @Filter + '%'
+ OR (SELECT COUNT(*) FROM {objectQualifier}Gafware_GlossaryAlt WHERE {objectQualifier}Gafware_GlossaryAlt.GlossaryID = {objectQualifier}Gafware_Glossary.GlossaryID AND {objectQualifier}Gafware_GlossaryAlt.AlternateTerm
+ LIKE '%' + @Filter + '%') > 0)
+ AND [{objectQualifier}Gafware_GlossaryCategory].GlossaryCategoryDefinitionID = @CategoryID
+ ORDER BY [{objectQualifier}Gafware_Glossary].[Term]
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCreate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCreate
+	@Term nvarchar(100)
+	,@Definition nvarchar(4000)
+	,@PortalID int
+AS
+
+INSERT INTO {objectQualifier}Gafware_Glossary (
+	[Term]
+		,[Definition]
+		,[PortalID]
+		,[DateTimeStamp]
+	
+) VALUES (
+	@Term
+		,@Definition
+		,@PortalID
+		,GetDate()
+	
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryUpdate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryUpdate
+	@GlossaryID bigint, 
+	@Term nvarchar(100), 
+	@Definition nvarchar(4000), 
+	@PortalID int
+
+AS
+
+UPDATE {objectQualifier}Gafware_Glossary SET
+	   [Term] = @Term
+	   ,[Definition] = @Definition
+	   ,[PortalID] = @PortalID
+	   ,[DateTimeStamp] = GetDate()
+WHERE
+    
+	[{objectQualifier}Gafware_Glossary].[GlossaryID] = @GlossaryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryDelete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryDelete
+	@GlossaryID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_Glossary
+WHERE 
+	[{objectQualifier}Gafware_Glossary].[GlossaryID] = @GlossaryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: Gafware_GlossaryCategoryDefinition
+/  ===================================================================================== */
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionGet    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionGet') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionGet
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionList    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionList
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionListByGlossary    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionListByGlossary') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionListByGlossary
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionCreate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionCreate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionCreate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionUpdate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionUpdate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionUpdate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionDelete    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionDelete
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionGet
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionGet
+	@GlossaryCategoryDefinitionID bigint
+	
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID],
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[CategoryName]
+FROM [{objectQualifier}Gafware_GlossaryCategoryDefinition]
+WHERE
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID] = @GlossaryCategoryDefinitionID
+	
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionList 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionList
+	@PortalID int
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID],
+	[Gafware_GlossaryCategoryDefinition].[PortalID],
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[CategoryName]
+FROM [{objectQualifier}Gafware_GlossaryCategoryDefinition]
+WHERE [{objectQualifier}Gafware_GlossaryCategoryDefinition].[PortalID] = @PortalID
+ORDER BY [{objectQualifier}Gafware_GlossaryCategoryDefinition].[CategoryName]
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionListByGlossary
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionListByGlossary
+	@GlossaryID bigint
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID],
+	[Gafware_GlossaryCategoryDefinition].[PortalID],
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[CategoryName]
+FROM [{objectQualifier}Gafware_GlossaryCategoryDefinition]
+INNER JOIN [{objectQualifier}Gafware_GlossaryCategory] ON [{objectQualifier}Gafware_GlossaryCategoryDefinition].GlossaryCategoryDefinitionID = [{objectQualifier}Gafware_GlossaryCategory].GlossaryCategoryDefinitionID
+WHERE [{objectQualifier}Gafware_GlossaryCategory].[GlossaryID] = @GlossaryID
+ORDER BY [{objectQualifier}Gafware_GlossaryCategoryDefinition].[CategoryName]
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionCreate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionCreate
+	@PortalID int,
+	@CategoryName nvarchar(50)
+AS
+INSERT INTO {objectQualifier}Gafware_GlossaryCategoryDefinition (
+	[CategoryName], [PortalID]
+	
+) VALUES (
+	@CategoryName, @PortalID
+	
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionUpdate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionUpdate
+	@GlossaryCategoryDefinitionID bigint, 
+	@PortalID int,
+	@CategoryName nvarchar(50) 
+
+AS
+
+UPDATE {objectQualifier}Gafware_GlossaryCategoryDefinition SET
+	   [PortalID] = @PortalID,
+	   [CategoryName] = @CategoryName
+WHERE
+    
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID] = @GlossaryCategoryDefinitionID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDefinitionDelete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDefinitionDelete
+	@GlossaryCategoryDefinitionID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_GlossaryCategoryDefinition
+WHERE 
+	[{objectQualifier}Gafware_GlossaryCategoryDefinition].[GlossaryCategoryDefinitionID] = @GlossaryCategoryDefinitionID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: Gafware_GlossaryCategory
+/  ===================================================================================== */
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGet    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGet') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGet
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryList    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryList
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_Glossary    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_Glossary') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_Glossary
+GO
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_GlossaryCategoryDefinition    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_GlossaryCategoryDefinition') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_GlossaryCategoryDefinition
+GO
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryCreate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryCreate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryCreate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryUpdate    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryUpdate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryUpdate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDelete    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDelete
+GO
+	
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDeleteByGlossary    Script Date: Wednesday, September 09, 2009 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDeleteByGlossary') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDeleteByGlossary
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryGet
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGet
+	@GlossaryCategoryID bigint
+	
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryDefinitionID]
+FROM [{objectQualifier}Gafware_GlossaryCategory]
+WHERE
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID] = @GlossaryCategoryID
+	
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryList 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryList
+  
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryDefinitionID]
+FROM [{objectQualifier}Gafware_GlossaryCategory]
+
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryGetByGafware_Glossary
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_Glossary
+	@GlossaryID bigint
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryDefinitionID]
+FROM [{objectQualifier}Gafware_GlossaryCategory]
+WHERE
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID]=@GlossaryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryGetByGafware_GlossaryCategoryDefinition
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryGetByGafware_GlossaryCategoryDefinition
+	@GlossaryCategoryDefinitionID bigint
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID],
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryDefinitionID]
+FROM [{objectQualifier}Gafware_GlossaryCategory]
+WHERE
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryDefinitionID]=@GlossaryCategoryDefinitionID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryCreate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryCreate
+	@GlossaryID bigint
+	,@GlossaryCategoryDefinitionID bigint
+AS
+DECLARE @myERROR int -- Local @@ERROR
+       , @myRowCount int -- Local @@ROWCOUNT
+
+INSERT INTO {objectQualifier}Gafware_GlossaryCategory (
+	[GlossaryID]
+		,[GlossaryCategoryDefinitionID]
+	
+) VALUES (
+	@GlossaryID
+		,@GlossaryCategoryDefinitionID
+	
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryUpdate
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryUpdate
+	@GlossaryCategoryID bigint, 
+	@GlossaryID bigint, 
+	@GlossaryCategoryDefinitionID bigint 
+
+AS
+DECLARE @myERROR int -- Local @@ERROR
+       , @myRowCount int -- Local @@ROWCOUNT
+
+UPDATE {objectQualifier}Gafware_GlossaryCategory SET
+	   [GlossaryID] = @GlossaryID
+	   ,[GlossaryCategoryDefinitionID] = @GlossaryCategoryDefinitionID
+WHERE
+    
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID] = @GlossaryCategoryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDelete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDelete
+	@GlossaryCategoryID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_GlossaryCategory
+WHERE 
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryCategoryID] = @GlossaryCategoryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryCategoryDeleteByGlossary
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryCategoryDeleteByGlossary
+	@GlossaryID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_GlossaryCategory
+WHERE 
+	[{objectQualifier}Gafware_GlossaryCategory].[GlossaryID] = @GlossaryID
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* =====================================================================================
+/   TABLE: Gafware_GlossaryAlt
+/  ===================================================================================== */
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermList    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryAltTermList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermList
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermDelete    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryAltTermDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermDelete
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermUpdate    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryAltTermUpdate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermUpdate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermCreate    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryAltTermCreate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermCreate
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryAltTermList
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermList
+ @GlossaryID bigint   
+
+AS
+
+SELECT
+	[{objectQualifier}Gafware_GlossaryAlt].[AltID],
+	[{objectQualifier}Gafware_GlossaryAlt].[GlossaryID],
+	[{objectQualifier}Gafware_GlossaryAlt].[AlternateTerm]
+FROM [{objectQualifier}Gafware_GlossaryAlt]
+ WHERE [{objectQualifier}Gafware_GlossaryAlt].[GlossaryID]=@GlossaryID
+ ORDER BY [{objectQualifier}Gafware_GlossaryAlt].[AlternateTerm]
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryAltTermDelete
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermDelete
+	@AltID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_GlossaryAlt
+WHERE 
+	[{objectQualifier}Gafware_GlossaryAlt].[AltID] = @AltID
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryAltTermUpdate
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermUpdate
+	@AltID bigint,
+	@GlossaryID bigint, 
+	@Term nvarchar(100)
+
+AS
+UPDATE {objectQualifier}Gafware_GlossaryAlt SET
+	   [GlossaryID] = @GlossaryID,
+	   [AlternateTerm] = @Term
+WHERE
+    
+	[{objectQualifier}Gafware_GlossaryAlt].[AltID] = @AltID
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryAltTermCreate
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryAltTermCreate
+	@GlossaryID bigint,
+	@Term nvarchar(100)
+AS
+INSERT INTO {objectQualifier}Gafware_GlossaryAlt (
+	[GlossaryID]
+	,[AlternateTerm]
+	
+) VALUES (
+	@GlossaryID
+	,@Term
+)
+
+select SCOPE_IDENTITY()
+GO
+
+
+/* =====================================================================================
+/   TABLE: Gafware_GlossaryPages
+/  ===================================================================================== */
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageList    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageList
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTerm    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTerm') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTerm
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTab    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTab') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTab
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByPortal    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageListByPortal') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByPortal
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageDelete    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageDelete
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageUpdate    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageUpdate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageUpdate
+GO
+
+/****** Object:  Stored Procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageCreate    Script Date: Thursday, November 20, 2014 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Gafware_GlossaryPageCreate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}Gafware_GlossaryPageCreate
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageList
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageList
+ @GlossaryID bigint   
+
+AS
+	SELECT	[{objectQualifier}Gafware_GlossaryPages].PageID
+			,[{objectQualifier}Gafware_GlossaryPages].GlossaryID
+			,[{objectQualifier}Gafware_GlossaryPages].TabID
+			,[{objectQualifier}Gafware_Glossary].Term
+	FROM [{objectQualifier}Gafware_GlossaryPages]
+	INNER JOIN [{objectQualifier}Gafware_Glossary] ON [{objectQualifier}Gafware_Glossary].GlossaryID = [{objectQualifier}Gafware_GlossaryPages].GlossaryID
+	INNER JOIN [{objectQualifier}Tabs] ON [{objectQualifier}Tabs].TabID = [{objectQualifier}Gafware_GlossaryPages].TabID
+	WHERE [{objectQualifier}Gafware_GlossaryPages].GlossaryID = @GlossaryID
+	ORDER BY CASE WHEN LEN(ISNULL([{objectQualifier}Tabs].Title, '')) = 0 THEN [{objectQualifier}Tabs].TabName ELSE [{objectQualifier}Tabs].Title END
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageDelete
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageDelete
+	@PageID bigint
+    
+	AS
+
+DELETE FROM {objectQualifier}Gafware_GlossaryPages
+WHERE 
+	[{objectQualifier}Gafware_GlossaryPages].[PageID] = @PageID
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageUpdate
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageUpdate
+	@PageID bigint,
+	@GlossaryID bigint, 
+	@TabID int
+
+AS
+UPDATE {objectQualifier}Gafware_GlossaryPages SET
+	   [GlossaryID] = @GlossaryID,
+	   [TabID] = @TabID
+WHERE
+    
+	[{objectQualifier}Gafware_GlossaryPages].[PageID] = @PageID
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageCreate
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageCreate
+	@GlossaryID bigint,
+	@TabID int
+AS
+	DECLARE @PageID bigint
+	SET @PageID = (SELECT PageID FROM {objectQualifier}Gafware_GlossaryPages WHERE GlossaryID = @GlossaryID AND TabID = @TabID)
+	IF (@PageID IS NULL)
+	BEGIN
+		INSERT INTO {objectQualifier}Gafware_GlossaryPages (
+			[GlossaryID]
+			,[TabID]
+		) VALUES (
+			@GlossaryID
+			,@TabID
+		)
+		SET @PageID = SCOPE_IDENTITY()
+	END
+	SELECT @PageID
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageListByTerm
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTerm
+ @Term nvarchar(100)
+
+AS
+	SELECT	[{objectQualifier}Gafware_GlossaryPages].PageID
+			,[{objectQualifier}Gafware_GlossaryPages].GlossaryID
+			,[{objectQualifier}Gafware_GlossaryPages].TabID
+			,[{objectQualifier}Gafware_Glossary].Term
+	FROM [{objectQualifier}Gafware_GlossaryPages]
+	INNER JOIN [{objectQualifier}Gafware_Glossary] ON [{objectQualifier}Gafware_Glossary].GlossaryID = [{objectQualifier}Gafware_GlossaryPages].GlossaryID
+	INNER JOIN [{objectQualifier}Tabs] ON [{objectQualifier}Tabs].TabID = [{objectQualifier}Gafware_GlossaryPages].TabID
+	WHERE [{objectQualifier}Gafware_Glossary].Term = @Term
+	ORDER BY CASE WHEN LEN(ISNULL([{objectQualifier}Tabs].Title, '')) = 0 THEN [{objectQualifier}Tabs].TabName ELSE [{objectQualifier}Tabs].Title END
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageListByTab
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByTab
+ @TabId int
+
+AS
+	SELECT	[{objectQualifier}Gafware_GlossaryPages].PageID
+			,[{objectQualifier}Gafware_GlossaryPages].GlossaryID
+			,[{objectQualifier}Gafware_GlossaryPages].TabID
+			,[{objectQualifier}Gafware_Glossary].Term
+	FROM [{objectQualifier}Gafware_GlossaryPages]
+	INNER JOIN [{objectQualifier}Gafware_Glossary] ON [{objectQualifier}Gafware_Glossary].GlossaryID = [{objectQualifier}Gafware_GlossaryPages].GlossaryID
+	INNER JOIN [{objectQualifier}Tabs] ON [{objectQualifier}Tabs].TabID = [{objectQualifier}Gafware_GlossaryPages].TabID
+	WHERE [{objectQualifier}Gafware_GlossaryPages].TabID = @TabId
+	ORDER BY CASE WHEN LEN(ISNULL([{objectQualifier}Tabs].Title, '')) = 0 THEN [{objectQualifier}Tabs].TabName ELSE [{objectQualifier}Tabs].Title END
+GO
+
+/* -------------------------------------------------------------------------------------
+/   Gafware_GlossaryPageListByPortal
+/  ------------------------------------------------------------------------------------- */
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Gafware_GlossaryPageListByPortal
+ @PortalId int
+
+AS
+	SELECT	[{objectQualifier}Gafware_GlossaryPages].PageID
+			,[{objectQualifier}Gafware_GlossaryPages].GlossaryID
+			,[{objectQualifier}Gafware_GlossaryPages].TabID
+			,[{objectQualifier}Gafware_Glossary].Term
+	FROM [{objectQualifier}Gafware_GlossaryPages]
+	INNER JOIN [{objectQualifier}Gafware_Glossary] ON [{objectQualifier}Gafware_Glossary].GlossaryID = [{objectQualifier}Gafware_GlossaryPages].GlossaryID
+	INNER JOIN [{objectQualifier}Tabs] ON [{objectQualifier}Tabs].TabID = [{objectQualifier}Gafware_GlossaryPages].TabID
+	WHERE [{objectQualifier}Gafware_Glossary].PortalID = @PortalId
+	ORDER BY CASE WHEN LEN(ISNULL([{objectQualifier}Tabs].Title, '')) = 0 THEN [{objectQualifier}Tabs].TabName ELSE [{objectQualifier}Tabs].Title END
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

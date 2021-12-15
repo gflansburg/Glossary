@@ -1,0 +1,17 @@
+﻿<h3>Gafware Glossary Module</h3>
+<p class="Contributor">
+	Gafware <br />
+	<a href="mailto:support@gafware.com">support@gafware.com</a><br />
+	<a href=http://www.ou.edu>http://www.ou.edu</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>About the Glossary module</h3>
+	<p class="Owner">
+		<b>Version 1.0</b><br /><br />
+	</p>
+	<p>Description about version.</p>
+	
+	<h4>Bug Fixes</h4>
+		Initial release	
+</div>

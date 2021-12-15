@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D61A32C-0F21-453F-A981-BD8E5A3A5304}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gafware.Modules.Glossary</RootNamespace>
+    <AssemblyName>Gafware.Glossary</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetNuke, Version=7.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Abstractions, Version=9.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.DependencyInjection, Version=9.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.UI, Version=2013.2.717.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\GlossaryPage.cs" />
+    <Compile Include="Components\GlossaryAlt.cs" />
+    <Compile Include="Components\GlossaryCategoryDefinition.cs" />
+    <Compile Include="Components\GlossaryCategory.cs" />
+    <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\GlossaryController.cs" />
+    <Compile Include="Components\GlossaryInfo.cs" />
+    <Compile Include="Agent.ascx.cs">
+      <DependentUpon>Agent.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent.ascx.designer.cs">
+      <DependentUpon>Agent.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentSettings.ascx.cs">
+      <DependentUpon>AgentSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentSettings.ascx.designer.cs">
+      <DependentUpon>AgentSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EditGlossary.ascx.cs">
+      <DependentUpon>EditGlossary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditGlossary.ascx.designer.cs">
+      <DependentUpon>EditGlossary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataProvider.cs" />
+    <Compile Include="GlossaryJob.cs" />
+    <Compile Include="GlossaryModuleBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GlossaryModuleSettingsBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditCategory.ascx.cs">
+      <DependentUpon>EditCategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditCategory.ascx.designer.cs">
+      <DependentUpon>EditCategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="GridViewExtended.cs" />
+    <Compile Include="html\HtmlAttribute.cs" />
+    <Compile Include="html\HtmlDocument.cs" />
+    <Compile Include="html\HtmlElement.cs" />
+    <Compile Include="html\HtmlEncoder.cs" />
+    <Compile Include="html\HtmlNode.cs" />
+    <Compile Include="html\HtmlParser.cs" />
+    <Compile Include="html\HtmlText.cs" />
+    <Compile Include="Icons.ascx.cs">
+      <DependentUpon>Icons.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Icons.ascx.designer.cs">
+      <DependentUpon>Icons.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="LetterFilter.ascx.cs">
+      <DependentUpon>LetterFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LetterFilter.ascx.designer.cs">
+      <DependentUpon>LetterFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.cs" />
+    <Compile Include="Search.ashx.cs">
+      <DependentUpon>Search.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SerializerHelper.cs" />
+    <Compile Include="Settings.ascx.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.ascx.designer.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Agent.ascx" />
+    <Content Include="AgentSettings.ascx" />
+    <Content Include="EditGlossary.ascx" />
+    <Content Include="Documentation\Documentation.css" />
+    <Content Include="Documentation\Documentation.html" />
+    <Content Include="EditCategory.ascx" />
+    <Content Include="Icons.ascx" />
+    <Content Include="Images\categoryIcon.gif" />
+    <Content Include="Images\DeleteIcon1_16px.gif" />
+    <Content Include="Images\EditIcon1_16px.gif" />
+    <Content Include="Images\glossary.png" />
+    <Content Include="Images\glossaryIcon.gif" />
+    <Content Include="Images\Icons\icons-01.svg" />
+    <Content Include="Images\Icons\icons-02.svg" />
+    <Content Include="Images\Icons\icons-03.svg" />
+    <Content Include="Images\NewIcon1_16px.gif" />
+    <Content Include="Images\save.gif" />
+    <Content Include="LetterFilter.ascx" />
+    <Content Include="License.txt" />
+    <Content Include="module.css" />
+    <Content Include="ReleaseNotes.txt" />
+    <Content Include="Scripts\image-picker.css" />
+    <Content Include="Scripts\image-picker.min.js" />
+    <Content Include="Scripts\imagesloaded.pkgd.js" />
+    <Content Include="Scripts\jqTransform\img\btn_left.gif" />
+    <Content Include="Scripts\jqTransform\img\btn_right.gif" />
+    <Content Include="Scripts\jqTransform\img\checkbox.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_left-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_left-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_left.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_right-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_right-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_right.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_text_left.gif" />
+    <Content Include="Scripts\jqTransform\img\input\input_text_right.gif" />
+    <Content Include="Scripts\jqTransform\img\radio.gif" />
+    <Content Include="Scripts\jqTransform\img\select_left.gif" />
+    <Content Include="Scripts\jqTransform\img\select_right.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bl-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bl-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bl.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bm-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bm-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-bm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-br-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-br-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-br.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-ml-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-ml-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-ml.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mm-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mm-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mr-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mr-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-mr.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tl-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tl-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tl.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tm-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tm-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tr-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tr-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\notneeded\textarea-tr.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea-mm-focus.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea-mm-hover.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea-mm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_bl.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_bm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_br.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_ml.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_mr.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_tl.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_tm.gif" />
+    <Content Include="Scripts\jqTransform\img\textarea\textarea_tr.gif" />
+    <Content Include="Scripts\jqTransform\jqtransform.css" />
+    <Content Include="Scripts\jqTransform\jquery.jqtransform.js" />
+    <Content Include="Scripts\jquery.qtip.css" />
+    <Content Include="Scripts\jquery.qtip.js" />
+    <Content Include="Scripts\jquery.tabguard1.0.js" />
+    <Content Include="Settings.ascx" />
+    <Content Include="View.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Glossary.dnn">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BuildScripts\ModulePackage.targets" />
+    <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\View.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EditGlossary.ascx.resx" />
+    <Content Include="App_LocalResources\Settings.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EditCategory.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AgentSettings.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Agent.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Search.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\vssver.scc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>
+          </DevelopmentServerVPath>
+          <IISUrl>http://test.dnndev.me/desktopmodules/Gafware/Glossary</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://test.dnndev.me</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>Glossary</DNNFileName>
+    <PackageName>Glossary</PackageName>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\packages\MSBuildTasks.1.4.0.61\tools</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  <Import Project="BuildScripts\ModulePackage.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="PackageModule">
+  </Target>
+</Project>

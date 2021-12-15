@@ -1,0 +1,152 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path />
+      <name>Agent.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>AgentSettings.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>EditCategory.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>EditGlossary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Icons.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>LetterFilter.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>License.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>module.css</name>
+    </file>
+    <file>
+      <path />
+      <name>ReleaseNotes.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>Search.ashx</name>
+    </file>
+    <file>
+      <path />
+      <name>Settings.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>View.ascx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Agent.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>AgentSettings.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>EditCategory.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>EditGlossary.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Settings.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.resx</name>
+    </file>
+    <file>
+      <path>Documentation/</path>
+      <name>Documentation.css</name>
+    </file>
+    <file>
+      <path>Documentation/</path>
+      <name>Documentation.html</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>categoryIcon.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>DeleteIcon1_16px.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>EditIcon1_16px.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>glossaryIcon.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>NewIcon1_16px.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>ou.gif</name>
+    </file>
+    <file>
+      <path>Images/</path>
+      <name>save.gif</name>
+    </file>
+    <file>
+      <path>Images/Icons/</path>
+      <name>icons-01.svg</name>
+    </file>
+    <file>
+      <path>Images/Icons/</path>
+      <name>icons-02.svg</name>
+    </file>
+    <file>
+      <path>Images/Icons/</path>
+      <name>icons-03.svg</name>
+    </file>
+    <file>
+      <path>Scripts/</path>
+      <name>image-picker.css</name>
+    </file>
+    <file>
+      <path>Scripts/</path>
+      <name>image-picker.min.js</name>
+    </file>
+    <file>
+      <path>Scripts/</path>
+      <name>imagesloaded.pkgd.js</name>
+    </file>
+    <file>
+      <path>Scripts/</path>
+      <name>jquery.qtip.css</name>
+    </file>
+    <file>
+      <path>Scripts/</path>
+      <name>jquery.qtip.js</name>
+    </file>
+    <file>
+      <path>Scripts/jqTransform/</path>
+      <name>jqtransform.css</name>
+    </file>
+    <file>
+      <path>Scripts/jqTransform/</path>
+      <name>jquery.jqtransform.js</name>
+    </file>
+  </files>
+</dotnetnuke>

@@ -1,0 +1,129 @@
+.glossarybox
+{
+	text-align: left;
+	display:table;
+    width: 100%;
+}
+.glossarybox .title
+{
+	text-decoration: none;
+}
+.glossarybox .letterbtn
+{
+}
+.glossarybox .glossarylist
+{
+	text-align: left;
+}
+.glossarybox .glossary
+{
+	width:auto;
+}
+
+.glossarybox .dnnFormItem input[type="text"],
+.glossarybox .dnnFormItem input[type="password"],
+.glossarybox .dnnFormItem input[type="email"],
+.glossarybox .dnnFormItem input[type="tel"],
+.glossarybox .dnnFormItem select,
+.glossarybox .dnnFormItem textarea {
+    width: auto;
+}
+
+.glossarybox .dnnFormItem button, 
+.glossarybox .dnnFormItem input[type="button"], 
+.glossarybox .dnnFormItem input[type="reset"], 
+.glossarybox .dnnFormItem input[type="submit"], 
+.glossarybox .dnnPrimaryAction, 
+.glossarybox .dnnSecondaryAction, 
+.glossarybox .dnnTertiaryAction {
+    margin-bottom: 17px;
+}
+
+.glossarybox .divCommands .olCommands, 
+.glossarybox .divCommands .olCommands li { display:inline; margin:0 auto 0 auto; }
+.glossarybox ol { padding:1em 1em 0 1em; list-style:none; }
+.glossarybox li { padding-bottom:1em; list-style:none; line-height:1.6em; }
+
+.glossarybox .date {
+    color: silver;
+    font-size: 8pt;
+}
+
+.glossarybox .glossaryheader {
+    width: 100%; 
+    font-size: 16pt; 
+    color: gray;
+    border-bottom: 1px solid gray;
+}
+
+.glossarybox .box {
+    border: 1px solid #dad6ce; 
+    /* -webkit-box-shadow: 0px 0px 1px 1px rgba(5, 5, 5, .1);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(5, 5, 5, .1);
+    box-shadow: 0px 0px 1px 1px rgba(5, 5, 5, .1);*/
+    padding: 5px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10px;
+}
+
+.glossarybox .box h3 {
+    font-size: 16px;
+    color: #10a1d8;
+	line-height: 1.0em;
+	margin: 0 0 10px 0;
+}
+
+.qtip-glossary {
+    max-width: 385px;
+}
+
+.qtip-glossary p {
+    margin: 0 0 6px;
+}
+
+.qtip-glossary h1{
+    font-size: 16px;
+    line-height: 1.1;
+    margin: 0 0 5px;
+}
+
+.qtip-glossary img {
+    float: left;
+    margin: 2px 5px 2px 0;
+}
+
+#glossaryAgentSettings .picker {
+    display: inline-block;
+}
+
+#glossaryAgentSettings .picker select {
+    width: 440px;
+}
+
+.qtip-titlebar a.qtip-icon {
+    text-decoration: none !important;
+}
+
+.glossarybox .IconBar {
+    white-space:nowrap;
+}
+
+.glossarybox .IconBar a {
+	height: 20px !important;
+	line-height: 1.0em !important;
+}
+
+.glossarybox .TopIconBar {
+    width:100%;
+    vertical-align:top;
+}
+
+.glossarybox .TopIconBar DIV {
+    float:right;
+}
+
+.glossarybox .IconBarPadding  {
+    padding-right:2px;
+}
