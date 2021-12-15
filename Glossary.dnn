@@ -124,7 +124,7 @@
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <dependencies>
-        <dependency type="CoreVersion">07.00.02</dependency>
+        <dependency type="CoreVersion">09.06.00</dependency>
       </dependencies>
       <component type="ResourceFile">
         <resourceFiles>
